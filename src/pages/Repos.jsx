@@ -21,7 +21,7 @@ export default function Repos() {
             <Listing key={repo.full_name}>
               <strong>{ repo.full_name }</strong>
               <p>{ repo.description }</p>
-              <span className='fw-bold text-primary'>{ repo.language }</span>
+              <span className='fw-bold text-primary'>{ repo.language != null ? repo.language  : 'error finding language⌛' }</span>
             </Listing>
           )
         })}
