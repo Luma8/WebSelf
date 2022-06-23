@@ -1,13 +1,22 @@
 import React from 'react'
 import styled from 'styled-components'
 import { GiHamburgerMenu } from 'react-icons/gi'
+import { BsFillSunFill, BsFillMoonStarsFill  } from 'react-icons/bs'
 
-export default function Navbar() {
+export default function Navbar({ toggleTheme, theme }) {
+
     return (
         <NavbarP>
-            <Hamburger>
+            <Hamburger className='d-md-none'>
                 <GiHamburgerMenu color='#CBDAD5' size={'30px'}/>
             </Hamburger>
+            <ToggleContainer>
+                <ToggleThemesButton
+                    onClick={toggleTheme}
+                >
+                    { theme.title === 'light' ? <BsFillMoonStarsFill  className="toggle-button" size={'25px'} /> : <BsFillSunFill className="toggle-button" size={'25px'} />}
+                </ToggleThemesButton>
+            </ToggleContainer>
             <NavUl className='d-md-inline d-none'>
                 <Navlink href='/'>
                     <span>Home</span>
@@ -28,9 +37,10 @@ export default function Navbar() {
 
 const NavbarP = styled.nav`
     width: 100%;
-    background-color: #34344E;
+    background-color: ${props => props.theme.color.secondary};
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     opacity: 0.8;
     position: fixed;
     padding: 1% 0;
@@ -39,6 +49,18 @@ const Hamburger = styled.button`
     border: none;
     top: 15%;
     background-color: transparent;
+`
+const ToggleContainer = styled.div`
+    
+`
+const ToggleThemesButton = styled.button`
+    border: 1px solid ${props => props.theme.color.toggleButton};
+    background-color: ${props => props.theme.color.toggleBackground};
+    border-radius: 5px;
+    .toggle-button {
+        color: ${props => props.theme.color.toggleButton};
+    }
+    
 `
 const NavUl = styled.ul `
     list-style: none;

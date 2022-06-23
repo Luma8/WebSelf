@@ -21,7 +21,7 @@ export default function Repos() {
             <Listing key={repo.full_name}>
               <strong>{ repo.full_name }</strong>
               <p>{ repo.description }</p>
-              <span className='fw-bold text-primary'>{ repo.language != null ? repo.language  : 'error finding language⌛' }</span>
+              <Languagem>{ repo.language != null ? repo.language  : 'error finding language⌛' }</Languagem>
             </Listing>
           )
         })}
@@ -31,10 +31,14 @@ export default function Repos() {
 }
 const Container = styled.div `
   padding-top: 100px;
-  color: white;
-  background-color: #272626;
+  height: auto;
+  color: ${props => props.theme.color.text};
+  background-color: ${props => props.theme.color.background};
 `
-
+const Languagem = styled.span`
+  font-weight: bold;
+  color: ${props => props.theme.color.language};
+`
 const ContainerUl = styled.ul `
   list-style: none;
 `

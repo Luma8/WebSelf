@@ -10,7 +10,7 @@ export default function Footer() {
 const FooterP = styled.footer `
     overflow: hidden;
     white-space: nowrap;
-    background-color: #34344E;
+    background-color: ${props => props.theme.color.secondary};
     color: gray;
     text-align: center;
 `
